@@ -1,0 +1,79 @@
+C51 COMPILER V9.56.0.0   CALCULATOR                                                        06/14/2020 23:29:28 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE CALCULATOR
+OBJECT MODULE PLACED IN .\Objects\Calculator.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE Calculator.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\Calculator.lst) TABS(2) OBJECT(.\Objects\Calculator.obj)
+
+line level    source
+
+   1          /*
+   2           * 5*8键盘输入，lcd1602显示
+   3           * 功能：运算均为单精度浮点数
+   4           * 共 19 钟运算功能：
+   5           * 加，减，乘，除，平方，开方，N次方
+   6           * 开N次方，正弦函数，余弦函数，正切函数
+   7           * 反正弦，反余弦，反正切，对数运算
+   8           * 阶乘（N<=34），排列，组合，累加
+   9           * 功能键:复位键，回删键，确定键，第二功能键，背光灯按键
+  10          */
+  11          
+  12          #include "intrins.h"
+  13          #include "AT89X52.h"
+  14          #include "stdio.h"
+  15          #include "stdlib.h"
+  16          #include "math.h"
+  17          #include "mathFunction.h"
+  18          #include "lcd1602.h"
+  19          #include "implement.h"
+  20          
+  21          #define uchar unsigned char
+  22          #define uint unsigned int
+  23          
+  24          void init()//显示和系统初始化函数
+  25          {
+  26   1          EA = 1;                //开总中断
+  27   1          ET1 = 1;                //T1开
+  28   1          TMOD = 0X10;            //设置T1工作方式1
+  29   1          TH1 = 0X3C;
+  30   1          TL1 = 0XB0;    //设置计数初置（晶振为12M，计50000个脉冲，50ms）
+  31   1      
+  32   1          P2_3 = 1;                //背光灯控制引脚，默认开背光
+  33   1          P3_6 = 0;                //第二功能键指示灯
+  34   1      
+  35   1          lcd_init();            //液晶显示初始化函数
+  36   1      
+  37   1          write_1602com(0x80);    //显示指针初始化
+  38   1          TR1 = 1;                    //T0开始工作
+  39   1      }
+  40          
+  41          int main() {
+  42   1          init();            //调用初始化函数
+  43   1          while (1)        //等待中断
+  44   1          {
+  45   2              PCON = 0X01;    //设置为待机模式
+  46   2          }
+  47   1      }
+  48          
+  49          void t1(void) interrupt 3 {
+  50   1          TH1 = 0X3C;
+  51   1          TL1 = 0XB0;    //计数初值重新载入
+  52   1          keypad();            //键盘检测
+  53   1      }
+
+C51 COMPILER V9.56.0.0   CALCULATOR                                                        06/14/2020 23:29:28 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   2265    ----
+   CONSTANT SIZE    =     43    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     60      24
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
