@@ -2,8 +2,8 @@
 Calculator base on AT89C52
 
 Source code:
-[https://www.cirmall.com/circuit/1600][µçÂ·³Ç£º»ùÓÚ51µ¥Æ¬»úµÄ¶àÔËËã¹¦ÄÜ¼ÆËãÆ÷£¨DIYÉè¼Æ·ÖÏí£© byCYGG]
+[https://www.cirmall.com/circuit/1600][ç”µè·¯åŸï¼šåŸºäº51å•ç‰‡æœºçš„å¤šè¿ç®—åŠŸèƒ½è®¡ç®—å™¨ï¼ˆDIYè®¾è®¡åˆ†äº«ï¼‰ byCYGG]
 
-[µçÂ·³Ç£º»ùÓÚ51µ¥Æ¬»úµÄ¶àÔËËã¹¦ÄÜ¼ÆËãÆ÷£¨DIYÉè¼Æ·ÖÏí£© byCYGG]: https://www.cirmall.com/circuit/1600
+[ç”µè·¯åŸï¼šåŸºäº51å•ç‰‡æœºçš„å¤šè¿ç®—åŠŸèƒ½è®¡ç®—å™¨ï¼ˆDIYè®¾è®¡åˆ†äº«ï¼‰ byCYGG]: https://www.cirmall.com/circuit/1600
 
-Code revised include code reformatting, word correction, code simplification.
+Code revised including code reformatting, word correction, code simplification.
